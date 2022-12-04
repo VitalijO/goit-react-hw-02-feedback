@@ -1,7 +1,8 @@
 import React from 'react';
 import './FeedbackOptions.module.css';
-import { FeedbackOptions } from "./FeedbackOptions"
-import { Statistics } from './Statistics';
+import FeedbackOptions  from "./FeedbackOptions"
+import Statistics from './Statistics';
+import PropTypes from 'prop-types';
 
 
 class App extends React.Component {
@@ -86,3 +87,11 @@ render()
 }
 }
 export default App;
+
+Statistics.propTypes = {
+   good :PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad :PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired,
+    positivePercentage: PropTypes.number.isRequired
+}

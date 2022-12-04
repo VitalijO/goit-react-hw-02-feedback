@@ -2,7 +2,7 @@ import React from "react";
 import css from "./FeedbackOptions.module.css"
 
 
-export const FeedbackOptions = ({onGoodFb, onNeutralFb,onBadFb}) => (
+const FeedbackOptions = ({onGoodFb, onNeutralFb,onBadFb}) => (
 <div className="Conter__controls">
                 <button type="button" className={css.btn} onClick={onGoodFb}> Good</button>
                 <button type="button" className={css.btn}  onClick={onNeutralFb}> Neutral</button>
@@ -11,3 +11,4 @@ export const FeedbackOptions = ({onGoodFb, onNeutralFb,onBadFb}) => (
             </div> 
 )
 
+export default FeedbackOptions
