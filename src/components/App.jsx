@@ -53,12 +53,15 @@ static defaultProps = {
         return  total
     }
   
-render()
-{
+  render()
+
+  {
+    const { bad, good, neutral } = this.state;
+   
   return (
       <> 
       <section title='FeedbackOptions'> 
-          <h2> Please leave feedback</h2>
+        <h2> Please leave feedback</h2>
            <FeedbackOptions
                 onGoodFb={this.hendleIncrementGood}
                 onNeutralFb={this.hendleIncrementNeutral}
@@ -73,9 +76,9 @@ render()
           (<p> There is no feedback</p>)
           :
           (<Statistics 
-        good={ this.state.good}
-        neutral={ this.state.neutral}
-        bad={ this.state.bad}
+        good={ good}
+        neutral={ neutral}
+        bad={bad}
         total={ this.countTotalFeedback()}
         positivePercentage={this.countPositiveFeedbackPercentage()} />
           )}  

@@ -1,5 +1,6 @@
 import React from "react";
 import css from "./FeedbackOptions.module.css"
+import PropTypes from 'prop-types';
 
 
 const FeedbackOptions = ({onGoodFb, onNeutralFb,onBadFb}) => (
@@ -12,3 +13,9 @@ const FeedbackOptions = ({onGoodFb, onNeutralFb,onBadFb}) => (
 )
 
 export default FeedbackOptions
+
+FeedbackOptions.propTypes = {
+    onGoodFb: PropTypes.func.isRequired,
+    onNeutralFb: PropTypes.func.isRequired,
+    onBadFb: PropTypes.func.isRequired
+};
