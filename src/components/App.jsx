@@ -1,5 +1,4 @@
 import React from 'react';
-import './FeedbackOptions.module.css';
 import FeedbackOptions  from "./FeedbackOptions"
 import Statistics from './Statistics';
 import PropTypes from 'prop-types';
@@ -17,55 +16,36 @@ static defaultProps = {
         bad: this.props.bad,
         
 }
-    hendleIncrementGood=()=> {
-        this.setState(prevState => {
-            return {
-            good: prevState.good+1
-        }
-          
-      })
-    }
-    hendleIncrementNeutral = () => {
-        this.setState(prevState => {
-            return {
-            neutral: prevState.neutral+1
-        }
-      })
-    }
-
-        hendleIncrementBad=()=> {
-        this.setState(prevState => {
-            return {
-            bad: prevState.bad+1
-        }
-          
-      })
-        }
-  
-  
-    countTotalFeedback = () => {
+ 
+countTotalFeedback = () => {
    let total = this.state.good+this.state.neutral+this.state.bad
             return total
     }
 
-    countPositiveFeedbackPercentage = () => {
+countPositiveFeedbackPercentage = () => {
        let total = Math.round((this.state.good / this.countTotalFeedback())*100) 
         return  total
     }
   
-  render()
+onIncrementFb = e => {
+    const type= e.target.textContent;
+    this.setState(prevState=>({[type]:prevState[type]+1}))
+  }
+
+  
+render()
 
   {
+    const{onIncrementFb, state}=this
     const { bad, good, neutral } = this.state;
-   
+    const typeFb= Object.keys(state);
   return (
       <> 
       <section title='FeedbackOptions'> 
         <h2> Please leave feedback</h2>
            <FeedbackOptions
-                onGoodFb={this.hendleIncrementGood}
-                onNeutralFb={this.hendleIncrementNeutral}
-          onBadFb={this.hendleIncrementBad}
+          options={typeFb}
+          onLeaveFeedback={onIncrementFb}
         />
       </section>
          
@@ -76,14 +56,13 @@ static defaultProps = {
           (<p> There is no feedback</p>)
           :
           (<Statistics 
+             
         good={ good}
         neutral={ neutral}
         bad={bad}
         total={ this.countTotalFeedback()}
         positivePercentage={this.countPositiveFeedbackPercentage()} />
           )}  
-        
-
         </section>    
     </>  
     );
